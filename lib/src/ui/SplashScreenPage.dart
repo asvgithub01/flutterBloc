@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_bloc_sample/src/blocs/LoginFirebaseWithGoogleBloc.dart';
 import 'package:flutter_app_bloc_sample/src/data/providers/Blocprovider.dart';
+import 'package:flutter_app_bloc_sample/src/ui/utils/NavigatorUI.dart';
 
 import 'LoginPage.dart';
 
@@ -16,15 +17,7 @@ class _SplashScreenState extends State<SplashScreenPage> {
     new Future.delayed(
         const Duration(seconds: 4),
         () => {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          BlocProvider<LoginFirebaseWithGoogleBloc>(
-                                  bloc: LoginFirebaseWithGoogleBloc(),
-                                  child: LoginPage())
-                              .child))
-
+              NavigatorUI.openLoginPage(context)
              });
   }
 

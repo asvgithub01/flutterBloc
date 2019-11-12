@@ -2,8 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_bloc_sample/src/blocs/EventosBloc.dart';
 import 'package:flutter_app_bloc_sample/src/data/models/EventosModel.dart';
-
-
+import 'package:flutter_app_bloc_sample/src/data/providers/Blocprovider.dart';
 
 class HomePage extends StatelessWidget {
   EventosBloc bloc;
@@ -14,8 +13,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bloc =
-        new EventosBloc(); //asv el mismo problema con el provider ver github(https://github.com/flutter-dart-es/flutter-pro) BlocProvider.of<EventosBloc>(context);
+    bloc =BlocProvider.of<EventosBloc>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -27,7 +25,7 @@ class HomePage extends StatelessWidget {
       ),
       body: Container(
           child: StreamBuilder<List<EventosModel>>(
-              stream: bloc.outEventos,
+              stream: bloc.getEventos,
               builder: (BuildContext ctx,
                   AsyncSnapshot<List<EventosModel>> snapshot) {
                 if (snapshot.hasData) {
@@ -53,25 +51,22 @@ class HomePage extends StatelessWidget {
     );
   }
 
-
-
   Widget _buildEventosTileItem(BuildContext context, EventosModel e) {
     return SizedBox(
       height: 220,
       child:   Card(
             elevation: 15,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0)),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
             child: Container(
                 decoration: new BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
                     image: new DecorationImage(
                       image: new NetworkImage(e.imagenPortada),
                       fit: BoxFit.cover,
-                    )))
+                    )),child: Text(''+e.nombre, style: TextStyle(fontSize: 25)))
       ),
     );
-//  return  Text(e.nombre);
+
   }
 
 

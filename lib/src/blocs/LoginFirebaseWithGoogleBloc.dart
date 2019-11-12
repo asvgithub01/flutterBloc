@@ -6,12 +6,12 @@ import 'package:rxdart/rxdart.dart';
 class LoginFirebaseWithGoogleBloc  implements BlocBase{
   FirebaseRepository _repository;
 
-  //StreamController
+  //StreamController(define q va llevar el stream)
   BehaviorSubject<FirebaseUser> _googleStream = BehaviorSubject<FirebaseUser>();
 
-  //stream
+  //streamcontroler
   Stream<FirebaseUser> get  googleAccount =>
-      _googleStream.stream; //esta propiedas es para consultar el resultado
+      _googleStream.stream; //esta propiedad es para consultar el resultado
   //constructor
   LoginFirebaseWithGoogleBloc() {
     _repository = FirebaseRepository();

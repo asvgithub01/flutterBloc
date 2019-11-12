@@ -18,26 +18,22 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    loginBloc =
-        LoginFirebaseWithGoogleBloc(); //BlocProvider.of<LoginFirebaseWithGoogleBloc>(context);
+    loginBloc = BlocProvider.of<LoginFirebaseWithGoogleBloc>(context);
 
     //asv TODO la navegacion se hace desde el splash al login mediante el block provider, xo no tira la linea de arriba
     //asv todo provider es null, nadie lo ha metido a los ancestros.. ni puta idea
     return new Scaffold(
-        body: Container(child: _drawLoginForm(context)
+        body: Container(child: _drawSignInButtons(context)
             // Column(children: <Widget>[ _drawUserInfo(context), _drawLoginForm(context)],)
             ));
   }
 
-  _drawLoginForm(BuildContext context) {
-    return _drawSignInButtons(context);
-  }
-
   void navigateHome(context) {
+   // NavigatorUI.openHomePage(context,this.user) ;
     NavigatorUI.openHomePage(context,this.user) ;
   }
 
-  _drawUserInfo(BuildContext context) {
+  _drawDetailUserInfo(BuildContext context) {
     return StreamBuilder(
         stream: loginBloc.googleAccount,
         builder: (BuildContext context, AsyncSnapshot<FirebaseUser> snapshot) {
@@ -78,7 +74,6 @@ class LoginPage extends StatelessWidget {
                     child: RaisedButton(
                       child: Text(
                         "Continuar",
-                       style: TextStyle(fontFamily: 'Montserrat Light'),
                       ),
                       textColor: Colors.black,
                       color: Colors.cyan,
@@ -132,7 +127,7 @@ class LoginPage extends StatelessWidget {
                       });
                     }
                   }),
-              _drawUserInfo(context),
+              _drawDetailUserInfo(context),
 
 
             ]));

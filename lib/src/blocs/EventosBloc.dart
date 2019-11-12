@@ -16,8 +16,8 @@ class EventosBloc implements BlocBase {
   //meter al stream sink
   Sink<List<EventosModel>> get inEventos => _eventosStreamController.sink;
 
-  //sacar stream
-  Stream<List<EventosModel>> get outEventos => _eventosStreamController.stream;
+  //sacar stream, pa leer desde fuera
+  Stream<List<EventosModel>> get getEventos => _eventosStreamController.stream;//
 
   //constructor
   EventosBloc() {
