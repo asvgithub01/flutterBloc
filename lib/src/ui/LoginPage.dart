@@ -28,10 +28,7 @@ class LoginPage extends StatelessWidget {
             ));
   }
 
-  void navigateHome(context) {
-   // NavigatorUI.openHomePage(context,this.user) ;
-    NavigatorUI.openHomePage(context,this.user) ;
-  }
+
 
   _drawDetailUserInfo(BuildContext context) {
     return StreamBuilder(
@@ -77,7 +74,7 @@ class LoginPage extends StatelessWidget {
                       ),
                       textColor: Colors.black,
                       color: Colors.cyan,
-                      onPressed: () => {navigateHome(context)},
+                      onPressed: () => {NavigatorUI.openHomePage(context,this.user) },
                     )),
                 Container(
                   padding: EdgeInsets.all(5),
@@ -90,7 +87,7 @@ class LoginPage extends StatelessWidget {
                       textColor: Colors.white,
                       onPressed: () {
                         loginBloc.googleSingOut();
-                        navigateHome(context);
+                        NavigatorUI.openLoginPage(context);
                       }),
                 )
               ],
