@@ -35,7 +35,7 @@ class _MultipleBlocsPageState extends State<MultipleBlocsPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-               Text('Simplemente para que se vea como inyectar varios blocs en un page'),
+               Text('Simplemente para que se vea como inyectar varios blocs en un page, los blocs no se utilizan'),
                 Container(
                   margin: new EdgeInsets.only(top: 25),
                 ),
